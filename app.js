@@ -11,7 +11,8 @@ var expressValidator= require('express-validator');
 var sweetalert = require ('sweetalert2');
 var bodyParser =require('body-parser');
 const http =require('http');
-
+var db = require('./models/db_controller');
+var signup =require('./controllers/signup');
 
 var app =express();
 
@@ -24,3 +25,5 @@ app.use(bodyParser.json());
 app.use(cookie());
 const PORT = process.env.PORT||3000
 server.listen(PORT,()=>console.log(`server running on port ${PORT}`))
+
+app.use('/signup', signup)
